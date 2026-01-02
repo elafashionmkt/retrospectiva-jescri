@@ -1,18 +1,116 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Retrospectiva Jescri</title>
-    <style>
-      html, body { height: 100%; margin: 0; background: #fff; }
-      iframe { width: 100%; height: 100%; border: 0; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe
-      src="https://embed.figma.com/slides/l57EiSJ6rGRFS73DMzf05k/-MODELO--RELAT%C3%93RIO?node-id=20-437&embed-host=share"
-      allowfullscreen
-    ></iframe>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retrospectiva Jescri</title>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7efe9;
+    }
+
+    .login {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: #fff;
+      padding: 32px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.08);
+      text-align: center;
+    }
+
+    .box h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .box p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      background: #8b0000;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: .9;
+    }
+
+    .error {
+      color: #b00020;
+      font-size: 13px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login" id="login">
+    <div class="box">
+      <h1>Acesso restrito</h1>
+      <p>Digite a senha para visualizar a apresentação</p>
+      <input type="password" id="password" placeholder="Senha" />
+      <button onclick="check()">Entrar</button>
+      <div class="error" id="error">Senha incorreta</div>
+    </div>
+  </div>
+
+  <iframe
+    id="content"
+    src="https://embed.figma.com/slides/l57EiSJ6rGRFS73DMzf05k/-MODELO--RELAT%C3%93RIO?node-id=20-437&embed-host=share"
+    allowfullscreen>
+  </iframe>
+
+  <script>
+    const PASSWORD = "jescri2025";
+
+    function check() {
+      const input = document.getElementById("password").value;
+      if (input === PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
 </html>
